@@ -49,7 +49,7 @@ fyrwatch.*.map.json
 # *.gif
 *.json
 *.firebaserc
-/.firebase
+/.firebase 
 # *.html
 lib/auth.dart
 ios/Runner/GoogleServiceInfo.plist
