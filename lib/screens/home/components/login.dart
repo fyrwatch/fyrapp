@@ -1,15 +1,21 @@
 // import 'package:fyrwatch/Components/default_button.dart';
 // import 'package:fyrwatch/Screens/home/components/action_button.dart';
+// import 'dart:html';
+
 import 'package:fyrwatch/screens/home/components/action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fyrwatch/constants.dart';
+import 'package:fyrwatch/InputDeco_design.dart';
+import 'package:fyrwatch/auth.dart';
+import 'package:get/get.dart';
+// import 'package:provider/provider.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:fyrwatch/screens/main/main_screen.dart';
 // import 'package:get/get.dart';
 
-// import 'package:provider/provider.dart';
-// import 'package:fyrwatch/controllers/MenuController.dart';
-// import 'package:fyrwatch/screens/main/main_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:fyrwatch/controllers/MenuController.dart';
+import 'package:fyrwatch/screens/main/main_screen.dart';
 
 class LogIn extends StatefulWidget {
   final Function onFyrSelected;
@@ -20,6 +26,9 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  String name, email, meshid;
+  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -70,33 +79,94 @@ class _LogInState extends State<LogIn> {
                         SizedBox(
                           height: 32,
                         ),
-                        TextField(
-                          decoration: InputDecoration(
-                            // hintText: 'MeshID',
-                            hintText: 'Mesh1234',
-                            labelText: 'MeshID',
-                            suffixIcon: Icon(
-                              Icons.mail_outline,
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              hintText: 'MeshID',
+                              labelText: 'MeshID',
+                              suffixIcon: Icon(Icons.perm_identity_outlined),
                             ),
+                            validator: (String value) {
+                              if (value.isEmpty) {
+                                return 'Please enter Mesh ID ';
+                              }
+                              if (meshid != mID) {
+                                return "Incorrect MeshID";
+                              }
+                              return null;
+                            },
+                            onSaved: (String value) {
+                              meshid = value;
+                            },
                           ),
                         ),
+                        // TextField(
+                        //   keyboardType: TextInputType.number,
+                        //   decoration: InputDecoration(
+                        //     // hintText: 'MeshID',
+                        //     hintText: 'Mesh1234',
+                        //     labelText: 'MeshID',
+                        //     suffixIcon: Icon(
+                        //       Icons.mail_outline,
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 32,
                         ),
-                        TextField(
-                          decoration: InputDecoration(
-                            // hintText: 'Password',
-                            hintText: '********',
-                            labelText: 'Password',
-                            suffixIcon: Icon(
-                              Icons.lock_outline,
+                        // TextFormField(
+                        //   controller: password,
+                        //   obscureText: true,
+                        //   keyboardType: TextInputType.text,
+                        //   decoration:
+                        //   buildInputDecoration(
+                        //       Icons.lock, "Confirm Password"),
+                        //   validator: (String value) {
+                        //     if (value.isEmpty) {
+                        //       return 'Please re-enter password';
+                        //     }
+
+                        //     if (password.text != pass) {
+                        //       return "Incorrect Password";
+                        //     }
+
+                        //     return null;
+                        //   },
+                        // ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: TextFormField(
+                            controller: password,
+                            obscureText: true,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              // hintText: 'Password',
+                              hintText: 'Password',
+                              labelText: 'Password',
+                              suffixIcon: Icon(
+                                Icons.lock_outline,
+                              ),
                             ),
+                            validator: (String value) {
+                              if (value.isEmpty) {
+                                return 'Please re-enter password';
+                              }
+
+                              if (password.text != pass) {
+                                return "Incorrect Password";
+                              }
+
+                              return null;
+                            },
                           ),
                         ),
                         SizedBox(
                           height: 64,
                         ),
-                        actionButton("Already logged in"),
+                        actionButton("LogIn"),
+
                         // GestureDetector(onTap: () {
                         //   Get.to(MainScreen());
                         // }),
