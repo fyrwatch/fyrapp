@@ -26,218 +26,263 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  String name, email, meshid;
+  // String name, email, meshid;
   TextEditingController password = TextEditingController();
+  TextEditingController meshid = TextEditingController();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: <Widget>[
-          Card(
-            elevation: 4,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
-            shadowColor: black.withOpacity(0.25),
-            color: white.withOpacity(0.03),
-            child: AnimatedContainer(
-              duration: Duration(milliseconds: 200),
-              height: size.height *
-                  (size.height > 550
-                      ? 0.75
-                      : size.height > 660
-                          ? 0.85
-                          : 0.95),
-              width: 625,
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.all(40),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "LOG IN",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.grey[700],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          width: 30,
-                          child: Divider(
-                            color: orange,
-                            thickness: 2,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 32,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              hintText: 'MeshID',
-                              labelText: 'MeshID',
-                              suffixIcon: Icon(Icons.perm_identity_outlined),
-                            ),
-                            validator: (String value) {
-                              if (value.isEmpty) {
-                                return 'Please enter Mesh ID ';
-                              }
-                              if (meshid != mID) {
-                                return "Incorrect MeshID";
-                              }
-                              return null;
-                            },
-                            onSaved: (String value) {
-                              meshid = value;
-                            },
-                          ),
-                        ),
-                        // TextField(
-                        //   keyboardType: TextInputType.number,
-                        //   decoration: InputDecoration(
-                        //     // hintText: 'MeshID',
-                        //     hintText: 'Mesh1234',
-                        //     labelText: 'MeshID',
-                        //     suffixIcon: Icon(
-                        //       Icons.mail_outline,
-                        //     ),
-                        //   ),
-                        // ),
-                        SizedBox(
-                          height: 32,
-                        ),
-                        // TextFormField(
-                        //   controller: password,
-                        //   obscureText: true,
-                        //   keyboardType: TextInputType.text,
-                        //   decoration:
-                        //   buildInputDecoration(
-                        //       Icons.lock, "Confirm Password"),
-                        //   validator: (String value) {
-                        //     if (value.isEmpty) {
-                        //       return 'Please re-enter password';
-                        //     }
-
-                        //     if (password.text != pass) {
-                        //       return "Incorrect Password";
-                        //     }
-
-                        //     return null;
-                        //   },
-                        // ),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: TextFormField(
-                            controller: password,
-                            obscureText: true,
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              // hintText: 'Password',
-                              hintText: 'Password',
-                              labelText: 'Password',
-                              suffixIcon: Icon(
-                                Icons.lock_outline,
-                              ),
-                            ),
-                            validator: (String value) {
-                              if (value.isEmpty) {
-                                return 'Please re-enter password';
-                              }
-
-                              if (password.text != pass) {
-                                return "Incorrect Password";
-                              }
-
-                              return null;
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 64,
-                        ),
-                        actionButton("LogIn"),
-
-                        // GestureDetector(onTap: () {
-                        //   Get.to(MainScreen());
-                        // }),
-
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     // MainScreen();
-                        //     MultiProvider(
-                        //       providers: [
-                        //         ChangeNotifierProvider(
-                        //           create: (context) => MenuController(),
-                        //         ),
-                        //       ],
-                        //       child: MainScreen(),
-                        //     );
-                        //   },
-                        // ),
-                        SizedBox(
-                          height: 32,
-                        ),
-                        Row(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: SingleChildScrollView(
+            child: Form(
+          key: _formkey,
+          child: Column(
+            children: <Widget>[
+              Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(60)),
+                shadowColor: black.withOpacity(0.25),
+                color: white.withOpacity(0.03),
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  height: size.height *
+                      (size.height > 550
+                          ? 0.75
+                          : size.height > 660
+                              ? 0.85
+                              : 0.95),
+                  width: 625,
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.all(40),
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            //     Text(
-                            //       "You do not have an account?",
-                            //       style: TextStyle(
-                            //         color: Colors.grey,
-                            //         fontSize: 14,
-                            //       ),
-                            //     ),
-                            //     SizedBox(
-                            //       width: 8,
-                            //     ),
-                            GestureDetector(
-                              onTap: () {
-                                widget.onFyrSelected();
-                              },
-                              child: MouseRegion(
-                                cursor: SystemMouseCursors.alias,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.arrow_back_ios_rounded,
-                                      color: orange,
-                                    ),
-                                    Text(
-                                      "Back",
-                                      style: TextStyle(
-                                        color: orange,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                  ],
-                                ),
+                            Text(
+                              "LOG IN",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey[700],
                               ),
-                            )
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Container(
+                              width: 30,
+                              child: Divider(
+                                color: orange,
+                                thickness: 2,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 32,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: TextFormField(
+                                controller: meshid,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  hintText: 'MeshID',
+                                  labelText: 'MeshID',
+                                  suffixIcon:
+                                      Icon(Icons.perm_identity_outlined),
+                                ),
+                                validator: (String value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter Mesh ID ';
+                                  }
+                                  if (meshid.text != mID.text) {
+                                    return "Incorrect MeshID";
+                                  }
+                                  return null;
+                                },
+                                // onSaved: (String value) {
+                                //   meshid = value;
+                                // },
+                              ),
+                            ),
+                            // TextField(
+                            //   keyboardType: TextInputType.number,
+                            //   decoration: InputDecoration(
+                            //     // hintText: 'MeshID',
+                            //     hintText: 'Mesh1234',
+                            //     labelText: 'MeshID',
+                            //     suffixIcon: Icon(
+                            //       Icons.mail_outline,
+                            //     ),
+                            //   ),
+                            // ),
+                            SizedBox(
+                              height: 32,
+                            ),
+                            // TextFormField(
+                            //   controller: password,
+                            //   obscureText: true,
+                            //   keyboardType: TextInputType.text,
+                            //   decoration:
+                            //   buildInputDecoration(
+                            //       Icons.lock, "Confirm Password"),
+                            //   validator: (String value) {
+                            //     if (value.isEmpty) {
+                            //       return 'Please re-enter password';
+                            //     }
+
+                            //     if (password.text != pass) {
+                            //       return "Incorrect Password";
+                            //     }
+
+                            //     return null;
+                            //   },
+                            // ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: TextFormField(
+                                controller: password,
+                                obscureText: true,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  // hintText: 'Password',
+                                  hintText: 'Password',
+                                  labelText: 'Password',
+                                  suffixIcon: Icon(
+                                    Icons.lock_outline,
+                                  ),
+                                ),
+                                validator: (String value) {
+                                  if (value.isEmpty) {
+                                    return 'Please re-enter password';
+                                  }
+
+                                  if (password.text != pass.text) {
+                                    return "Incorrect Password";
+                                  }
+
+                                  return null;
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 64,
+                            ),
+                            // ButtonBar()
+                            // actionButton("LogIn"),
+
+                            SizedBox(
+                              height: 50,
+                              width: double.infinity,
+                              child: RaisedButton(
+                                color: orange,
+                                onPressed: () {
+                                  if (_formkey.currentState.validate()) {
+                                    Get.to(
+                                      MultiProvider(
+                                        providers: [
+                                          ChangeNotifierProvider(
+                                            create: (context) =>
+                                                MenuController(),
+                                          ),
+                                        ],
+                                        child: MainScreen(),
+                                      ),
+                                    );
+                                  } else {
+                                    print("UnSuccessfull");
+                                  }
+                                  // if (_formkey.currentState.validate()) {
+                                  //   print("successful");
+
+                                  //   return;
+                                  // } else {
+                                  //   print("UnSuccessfull");
+                                  // }
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    side: BorderSide(
+                                        color: Colors.blue, width: 2)),
+                                textColor: Colors.white,
+                                child: Text("Login"),
+                              ),
+                            ),
+                            // GestureDetector(onTap: () {
+                            //   Get.to(MainScreen());
+                            // }),
+
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     // MainScreen();
+                            //     MultiProvider(
+                            //       providers: [
+                            //         ChangeNotifierProvider(
+                            //           create: (context) => MenuController(),
+                            //         ),
+                            //       ],
+                            //       child: MainScreen(),
+                            //     );
+                            //   },
+                            // ),
+                            SizedBox(
+                              height: 32,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                //     Text(
+                                //       "You do not have an account?",
+                                //       style: TextStyle(
+                                //         color: Colors.grey,
+                                //         fontSize: 14,
+                                //       ),
+                                //     ),
+                                //     SizedBox(
+                                //       width: 8,
+                                //     ),
+                                GestureDetector(
+                                  onTap: () {
+                                    widget.onFyrSelected();
+                                  },
+                                  child: MouseRegion(
+                                    cursor: SystemMouseCursors.alias,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.arrow_back_ios_rounded,
+                                          color: orange,
+                                        ),
+                                        Text(
+                                          "Back",
+                                          style: TextStyle(
+                                            color: orange,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+              )
+            ],
+          ),
+        )));
   }
 }
