@@ -56,3 +56,4 @@ ios/Runner/GoogleServiceInfo.plist
 android/app/build.gradle
 android/build.gradle
 lib/InputDeco_design.dart
+android/app/google-services.json
