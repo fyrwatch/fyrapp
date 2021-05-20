@@ -51,3 +51,8 @@ fyrwatch.*.map.json
 *.firebaserc
 /.firebase
 # *.html
+lib/auth.dart
+ios/Runner/GoogleServiceInfo.plist
+android/app/build.gradle
+android/build.gradle
+lib/InputDeco_design.dart
