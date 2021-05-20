@@ -45,9 +45,9 @@ fyrwatch.*.map.json
 /android/fyrwatch/profile
 /android/fyrwatch/release
 
-*.png
-*.gif
+# *.png
+# *.gif
 *.json
 *.firebaserc
 /.firebase
-*.html
+# *.html
