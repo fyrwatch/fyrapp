@@ -1,5 +1,6 @@
 // import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants.dart';
 
@@ -27,14 +28,26 @@ class Chart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: defaultPadding),
-                Text(
-                  "0.2 / 1",
-                  style: Theme.of(context).textTheme.headline4.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        height: 0.5,
-                      ),
-                ),
+                Text("0.2 / 1",
+                    style: GoogleFonts.montserrat(
+                        color: orange,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 55,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(5.0, 5.0),
+                            blurRadius: 10.0,
+                            color: white.withOpacity(0.2),
+                          )
+                        ]))
+
+                //   TextStyle(
+                //       color: Colors.white,
+                //       fontWeight: FontWeight.bold,
+                //       height: 0.5,
+                //       fontFamily: GoogleFonts.montserratTextTheme(),
+                //       fontSize: 55),
+                // ),
                 // Text("of 1")
               ],
             ),
