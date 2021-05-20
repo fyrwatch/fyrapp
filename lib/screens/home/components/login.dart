@@ -178,6 +178,7 @@ class _LogInState extends State<LogIn> {
                             SizedBox(
                               height: 50,
                               width: double.infinity,
+                              // ignore: deprecated_member_use
                               child: RaisedButton(
                                 color: orange,
                                 onPressed: () {
@@ -205,11 +206,15 @@ class _LogInState extends State<LogIn> {
                                   // }
                                 },
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                    side: BorderSide(
-                                        color: Colors.blue, width: 2)),
+                                  borderRadius: BorderRadius.circular(50.0),
+                                ),
+                                // side: BorderSide(
+                                //     color: Colors.blue, width: 2)),
                                 textColor: Colors.white,
-                                child: Text("Login"),
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(fontSize: 22),
+                                ),
                               ),
                             ),
                             // GestureDetector(onTap: () {

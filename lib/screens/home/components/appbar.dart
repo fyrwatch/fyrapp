@@ -2,6 +2,7 @@
 // import 'package:fyrwatch/Screens/home/components/login.dart';
 import 'package:fyrwatch/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:fyrwatch/screens/home/home_screen.dart';
 // import 'package:fyrwatch/Components/default_button.dart';
 import 'package:fyrwatch/url.dart';
 import 'menu_item.dart';
@@ -44,7 +45,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           height: 25,
           alignment: Alignment.topCenter,
         ),
-        SizedBox(width: 3),
+        SizedBox(width: 5),
         // Text(
         //   "fyrwatch".toUpperCase(),
         //   style: TextStyle(
@@ -56,27 +57,29 @@ class _CustomAppBarState extends State<CustomAppBar> {
         // Spacer(),
         MenuItem(
           title: "Home",
-          press: () {},
+          press: () {
+            Get.to(HomeScreen());
+          },
         ),
         // MenuItem(
         //   title: "About",
         //   press: () {},
         // ),
-        MenuItem(
-          title: "Dashboard",
-          press: () {
-            Get.to(
-              MultiProvider(
-                providers: [
-                  ChangeNotifierProvider(
-                    create: (context) => MenuController(),
-                  ),
-                ],
-                child: MainScreen(),
-              ),
-            );
-          },
-        ),
+        // MenuItem(
+        //   title: "Dashboard",
+        //   press: () {
+        //     Get.to(
+        //       MultiProvider(
+        //         providers: [
+        //           ChangeNotifierProvider(
+        //             create: (context) => MenuController(),
+        //           ),
+        //         ],
+        //         child: MainScreen(),
+        //       ),
+        //     );
+        //   },
+        // ),
         MenuItem(
           title: "GitHub",
           press: () {
