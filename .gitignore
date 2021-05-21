@@ -57,3 +57,9 @@ android/app/build.gradle
 android/build.gradle
 lib/InputDeco_design.dart
 android/app/google-services.json
+node_modules
+web/index.html
+*.rules
+functions
+node_modules
+fire.dart 

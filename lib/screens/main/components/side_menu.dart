@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:fyrwatch/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fyrwatch/screens/home/home_screen.dart';
+import 'package:get/get.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -61,9 +63,11 @@ class SideMenu extends StatelessWidget {
               press: () {},
             ),
             DrawerListTile(
-              title: "Settings",
+              title: "Sign Out",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () {},
+              press: () {
+                Get.to(HomeScreen());
+              },
             ),
           ],
         ),

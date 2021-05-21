@@ -28,7 +28,7 @@ class Chart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: defaultPadding),
-                Text("0.2 / 1",
+                Text("13.54 / 100",
                     style: GoogleFonts.montserrat(
                         color: orange,
                         fontWeight: FontWeight.bold,
