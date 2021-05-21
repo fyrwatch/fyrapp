@@ -123,7 +123,7 @@ class _RecentFilesState extends State<RecentFiles> {
               columnSpacing: defaultPadding,
               columns: [
                 DataColumn(
-                  label: Text(" Average Probability"),
+                  label: Text("Probability"),
                 ),
                 DataColumn(
                   label: Text("Ping Date"),

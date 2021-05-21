@@ -56,10 +56,10 @@ class FileInfoCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          ProgressLine(
-            color: info.color,
-            percentage: info.percentage,
-          ),
+          // ProgressLine(
+          //   color: info.color,
+          //   percentage: info.percentage,
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -85,39 +85,39 @@ class FileInfoCard extends StatelessWidget {
   }
 }
 
-class ProgressLine extends StatelessWidget {
-  const ProgressLine({
-    Key key,
-    this.color = primaryColor,
-    @required this.percentage,
-  }) : super(key: key);
+// class ProgressLine extends StatelessWidget {
+//   const ProgressLine({
+//     Key key,
+//     this.color = primaryColor,
+//     @required this.percentage,
+//   }) : super(key: key);
 
-  final Color color;
-  final int percentage;
+//   final Color color;
+//   final int percentage;
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: double.infinity,
-          height: 5,
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-        ),
-        LayoutBuilder(
-          builder: (context, constraints) => Container(
-            width: constraints.maxWidth * (percentage / 100),
-            height: 5,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Stack(
+//       children: [
+//         Container(
+//           width: double.infinity,
+//           height: 5,
+//           decoration: BoxDecoration(
+//             color: color.withOpacity(0.1),
+//             borderRadius: BorderRadius.all(Radius.circular(10)),
+//           ),
+//         ),
+//         LayoutBuilder(
+//           builder: (context, constraints) => Container(
+//             width: constraints.maxWidth * (percentage / 100),
+//             height: 5,
+//             decoration: BoxDecoration(
+//               color: color,
+//               borderRadius: BorderRadius.all(Radius.circular(10)),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
